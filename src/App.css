@@ -1,0 +1,30 @@
+*{
+  font-family: sans-serif;
+}
+.App{
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  place-content: center;
+  font-family: sans-serif;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+  
+.right {
+  color: green;
+}
+.wrong {
+  color: red;
+}
+ol {
+  list-style-position: inside;
+}
+li{
+  font-size: 1.3rem;
+  margin: 0.3rem;
+  background-color: rgb(245, 240, 240);
+}
