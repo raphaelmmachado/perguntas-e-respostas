@@ -1,20 +1,20 @@
 const questions = [
   {
-    title: "Qual é o nome dos três cachorros da Patrícia?",
+    title: "Qual é o nome do personagem principal dos jogos da nintendo?",
     options: [
-      { answer: "Bilu, Preta e Branquinho", isCorrect: false },
-      { answer: "Lulu, Feia e Maluquinho", isCorrect: false },
-      { answer: "Malu, Teta e Menino", isCorrect: true },
-      { answer: "Xuxu, Bela e Pinico", isCorrect: false },
+      { answer: "Sonic", isCorrect: false },
+      { answer: "Crash Bandicoot", isCorrect: false },
+      { answer: "Mario", isCorrect: true },
+      { answer: "Kratos", isCorrect: false },
     ],
   },
   {
-    title: "Quando é o aniversário do Gegê?",
+    title: "Qual é o nome do personagem principal de The Legend Of Zelda?",
     options: [
-      { answer: "3 de fevereiro", isCorrect: false },
-      { answer: "3 de agosto", isCorrect: false },
-      { answer: "3 de junho", isCorrect: false },
-      { answer: "3 de julho", isCorrect: true },
+      { answer: "Zelda", isCorrect: false },
+      { answer: "Mario", isCorrect: false },
+      { answer: "Bowser", isCorrect: false },
+      { answer: "Link", isCorrect: true },
     ],
   },
   {
@@ -23,7 +23,7 @@ const questions = [
       { answer: "Babu", isCorrect: false },
       { answer: "Tiririca", isCorrect: false },
       { answer: "Arthur", isCorrect: true },
-      { answer: "Jailson Mendes", isCorrect: false },
+      { answer: "Bolsonaro", isCorrect: false },
     ],
   },
   {
@@ -43,6 +43,33 @@ const questions = [
       { answer: "Berlim", isCorrect: false },
       { answer: "Milão", isCorrect: false },
     ],
+  },
+  {
+    title: "Qual é a capital do Acre?",
+    options: [
+      { answer: "Rio Branco", isCorrect: true },
+      { answer: "Palmas", isCorrect: false },
+      { answer: "São Luiz", isCorrect: false },
+      { answer: "Jurassic Park", isCorrect: false },
+    ],
+  },
+  {
+   title: "Quais são os 3 dragões de Daenerys Targaryen da série Game of Thrones?" ,
+   options:[
+     { answer: "Rugal, Dragan e Valeryon", isCorrect: false},
+     { answer: "Mushu, Dracon e Valhalla", isCorrect: false},
+     { answer: "Vhagar, Sunfire e Ballerion", isCorrect: false},
+     { answer: "Raeghal, Drogon e Viseryon", isCorrect: true},
+   ],
+  },
+  {
+    title: "Qual é o nome do dançarino gay dos memes?",
+    options:[
+      { answer: "Jailson Mendes", isCorrect: false},
+      { answer: "Ricardo Milos", isCorrect: true},
+      { answer: "Diogo Defante", isCorrect: false},
+      { answer: "Danilo Gentili", isCorrect: false},
+    ]
   }
 ];
 export default questions;

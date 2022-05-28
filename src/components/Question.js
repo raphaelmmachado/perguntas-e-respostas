@@ -1,5 +1,5 @@
 import React from "react";
 function Question(props) {
-  return <h1>{props.question}</h1>;
+  return <h1 className="title">{props.question}</h1>;
 }
 export default Question;

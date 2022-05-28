@@ -2,28 +2,29 @@ import "./App.css";
 import Question from "./components/Question.js";
 import Answer from "./components/Answer.js";
 import React, { useState } from "react";
-import questions from "./components/QuestionsObject"
+import questions from "./components/QuestionsObject";
 
 function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [points,setPoints] = useState(0)
+  const [points, setPoints] = useState(0);
   const [correct, setCorrect] = useState(false);
   const [incorrect, setIncorrect] = useState(false);
-  const [gameOver, setGameOver] = useState(false)
-  console.log("correto?",correct,"incorreto?", incorrect);
+  const [gameOver, setGameOver] = useState(false);
+  console.log("gameover", gameOver, "correct", correct, "incor", incorrect);
   const checkRightAnswer = (isCorrect) => {
     if (isCorrect) {
-      setIncorrect(false);
       setCorrect(true);
-      setPoints(prevPoints => prevPoints + 1)
+      setPoints((prevPoints) => prevPoints + 1);
     } else {
-      setCorrect(false);
       setIncorrect(true);
     }
   };
   const tryAgain = () => {
+    setCurrentQuestion(0);
+    setPoints(0);
     setCorrect(false);
     setIncorrect(false);
+    setGameOver(false);
   };
   const nextQuestion = () => {
     const nextQuestion = currentQuestion + 1;
@@ -31,18 +32,25 @@ function App() {
       setCorrect(false);
       setIncorrect(false);
       setCurrentQuestion((prevQuestion) => prevQuestion + 1);
-    }else{
-      setGameOver(true)
+    } else {
+      setGameOver(true);
     }
-
   };
   return (
     <div className="App">
-      {gameOver && <h1>ACABOU</h1>}
+      {gameOver && (
+        <div className="column">
+          <h1>ACABOU</h1>
+          <p>
+            Você acertou {points} de {questions.length}
+          </p>
+          <div className="button" onClick={() => tryAgain()}>
+            Recomeçar
+          </div>
+        </div>
+      )}
       {!correct && !incorrect && !gameOver && (
         <div>
-          <div className="row"><div>Pergunta {currentQuestion + 1}</div> <div>Pontuação {points}</div></div>
-          
           <Question question={questions[currentQuestion].title} />
           <ol>
             <Answer
@@ -80,17 +88,21 @@ function App() {
           </ol>
         </div>
       )}
-      {correct && !incorrect && (
-        <>
+      {correct && !incorrect && !gameOver && (
+        <div className="column">
           <h1 className="right">🎉ACERTOU🎉</h1>
-          <button onClick={() => nextQuestion()}>Próxima Pergunta</button>
-        </>
+          <div className="button" onClick={() => nextQuestion()}>
+            Próxima Pergunta
+          </div>
+        </div>
       )}
-      {incorrect && !correct && (
-        <>
+      {incorrect && !correct && !gameOver && (
+        <div className="column">
           <h1 className="wrong">💩ERROU💩</h1>
-          <button onClick={() => tryAgain()}>Tente de novo</button>
-        </>
+          <div className="button" onClick={() => nextQuestion()}>
+            Próxima Pergunta
+          </div>
+        </div>
       )}
     </div>
   );

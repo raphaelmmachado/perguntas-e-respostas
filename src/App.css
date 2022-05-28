@@ -1,30 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&family=Roboto&display=swap');
 *{
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
 }
+body{
+  display: flex;
+  place-items: center;
+  place-content: center;
+  height: 100vh;
+  background: rgb(42,92,191);
+background: linear-gradient(90deg, rgba(42,92,191,1) 0%, rgba(44,111,250,1) 46%, rgba(32,71,194,0.9836309523809523) 69%);
+}
+
 .App{
   display: flex;
   flex-direction: column;
   place-items: center;
   place-content: center;
   font-family: sans-serif;
+  background-color: white;
+  padding: 1rem;
+  border-radius: .8rem;
+  max-width: 65vw;
+}
+.column{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  place-items: space-around;
+  place-content: space-around;
 }
 .row{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
-  
+.title{
+  font-size: 1.7rem;
+  color: black;
+  margin: 1.2rem;
+text-align: center;
+}
 .right {
   color: green;
 }
 .wrong {
   color: red;
 }
+.button{
+  padding: .3rem;
+  text-align: center;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(43, 115, 248);
+}
+.button:hover{
+  color: rgb(43, 115, 248);
+  background-color: white;
+  cursor: pointer;
+}
 ol {
+  margin: 2rem;
   list-style-position: inside;
 }
+
 li{
-  font-size: 1.3rem;
-  margin: 0.3rem;
-  background-color: rgb(245, 240, 240);
+  text-align: center;
+   font-size: 1.3rem;
+  margin: 1rem;
+  color: black;
+  cursor: pointer;
+}
+li:hover{
+  background-color: hsla(32, 100%, 91%, 0.41);
+  color:hsla(0, 0%, 17%, 1);
+}
+@media(max-width: 600px){
+  .title{
+    font-size: 1.6rem;
+  }
+  li{
+    font-size: 1.3rem;
+  }
 }
