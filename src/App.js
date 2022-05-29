@@ -1,16 +1,55 @@
 import "./App.css";
 import Question from "./components/Question.js";
 import Answer from "./components/Answer.js";
-import React, { useState } from "react";
-import questions from "./components/QuestionsObject";
+import React, { useState, useEffect } from "react";
+// import myQuestions from "./components/QuestionsObject";
+import axios from "axios";
 
 function App() {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [questionIndex, setQuestionIndex] = useState(0);
   const [points, setPoints] = useState(0);
   const [correct, setCorrect] = useState(false);
   const [incorrect, setIncorrect] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  console.log("gameover", gameOver, "correct", correct, "incor", incorrect);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    HTTPRequest();
+  }, []);
+
+  const HTTPRequest = async () => {
+    const response = await axios.get(
+      "https://opentdb.com/api.php?amount=10&category=15&difficulty=hard&type=multiple"
+    );
+    const shuffle = (array) => {
+      let temporaryValue;
+      let randomIndex;
+      let currentIndex = array.length;
+      while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+      return array;
+    };
+    const newArrayofData = response.data.results.map((item) => ({
+      question: item.question,
+      options: shuffle([
+        { answer: item.correct_answer, isCorrect: true },
+        { answer: item.incorrect_answers[0], isCorrect: false },
+        { answer: item.incorrect_answers[1], isCorrect: false },
+        { answer: item.incorrect_answers[2], isCorrect: false },
+      ]),
+    }
+    ))
+
+    const shuffledArray = shuffle(newArrayofData)
+    console.log("formated", newArrayofData )
+    console.log("shuf", shuffledArray);
+
+  };
   const checkRightAnswer = (isCorrect) => {
     if (isCorrect) {
       setCorrect(true);
@@ -20,29 +59,30 @@ function App() {
     }
   };
   const tryAgain = () => {
-    setCurrentQuestion(0);
+    setQuestionIndex(0);
     setPoints(0);
     setCorrect(false);
     setIncorrect(false);
     setGameOver(false);
   };
   const nextQuestion = () => {
-    const nextQuestion = currentQuestion + 1;
-    if (nextQuestion < questions.length) {
+    const nextQuestion = questionIndex + 1;
+    if (nextQuestion < data.length) {
       setCorrect(false);
       setIncorrect(false);
-      setCurrentQuestion((prevQuestion) => prevQuestion + 1);
+      setQuestionIndex((prevQuestion) => prevQuestion + 1);
     } else {
       setGameOver(true);
     }
   };
+
   return (
     <div className="App">
       {gameOver && (
         <div className="column">
           <h1>ACABOU</h1>
           <p>
-            Você acertou {points} de {questions.length}
+            Você acertou {points} de {data.length}
           </p>
           <div className="button" onClick={() => tryAgain()}>
             Recomeçar
@@ -51,39 +91,23 @@ function App() {
       )}
       {!correct && !incorrect && !gameOver && (
         <div>
-          <Question question={questions[currentQuestion].title} />
+          <Question question={"pergunta"} />
           <ol>
             <Answer
-              checkRightAnswer={() =>
-                checkRightAnswer(
-                  questions[currentQuestion].options[0].isCorrect
-                )
-              }
-              answer={questions[currentQuestion].options[0].answer}
+              checkRightAnswer={() => checkRightAnswer(false)}
+              answer={"resposta 1"}
             />
             <Answer
-              checkRightAnswer={() =>
-                checkRightAnswer(
-                  questions[currentQuestion].options[1].isCorrect
-                )
-              }
-              answer={questions[currentQuestion].options[1].answer}
+              checkRightAnswer={() => checkRightAnswer(false)}
+              answer={"resposta 2"}
             />
             <Answer
-              checkRightAnswer={() =>
-                checkRightAnswer(
-                  questions[currentQuestion].options[2].isCorrect
-                )
-              }
-              answer={questions[currentQuestion].options[2].answer}
+              checkRightAnswer={() => checkRightAnswer(false)}
+              answer={"resposta 3"}
             />
             <Answer
-              checkRightAnswer={() =>
-                checkRightAnswer(
-                  questions[currentQuestion].options[3].isCorrect
-                )
-              }
-              answer={questions[currentQuestion].options[3].answer}
+              checkRightAnswer={() => checkRightAnswer(false)}
+              answer={"resposta 4"}
             />
           </ol>
         </div>

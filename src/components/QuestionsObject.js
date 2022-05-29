@@ -1,4 +1,4 @@
-const questions = [
+const myQuestions = [
   {
     title: "Qual é o nome do personagem principal dos jogos da nintendo?",
     options: [
@@ -54,22 +54,50 @@ const questions = [
     ],
   },
   {
-   title: "Quais são os 3 dragões de Daenerys Targaryen da série Game of Thrones?" ,
-   options:[
-     { answer: "Rugal, Dragan e Valeryon", isCorrect: false},
-     { answer: "Mushu, Dracon e Valhalla", isCorrect: false},
-     { answer: "Vhagar, Sunfire e Ballerion", isCorrect: false},
-     { answer: "Raeghal, Drogon e Viseryon", isCorrect: true},
-   ],
+    title:
+      "Quais são os 3 dragões de Daenerys Targaryen da série Game of Thrones?",
+    options: [
+      { answer: "Rugal, Dragan e Valeryon", isCorrect: false },
+      { answer: "Mushu, Dracon e Valhalla", isCorrect: false },
+      { answer: "Vhagar, Sunfire e Ballerion", isCorrect: false },
+      { answer: "Raeghal, Drogon e Viseryon", isCorrect: true },
+    ],
   },
   {
     title: "Qual é o nome do dançarino gay dos memes?",
-    options:[
-      { answer: "Jailson Mendes", isCorrect: false},
-      { answer: "Ricardo Milos", isCorrect: true},
-      { answer: "Diogo Defante", isCorrect: false},
-      { answer: "Danilo Gentili", isCorrect: false},
-    ]
-  }
+    options: [
+      { answer: "Jailson Mendes", isCorrect: false },
+      { answer: "Ricardo Milos", isCorrect: true },
+      { answer: "Diogo Defante", isCorrect: false },
+      { answer: "Danilo Gentili", isCorrect: false },
+    ],
+  },
+  {
+    title: "Qual desses não é filho de Ragnar Lotbrok?",
+    options: [
+      { answer: "Sigurd", isCorrect: false },
+      { answer: "Olaf", isCorrect: true },
+      { answer: "Vitserk", isCorrect: false },
+      { answer: "Ubbe", isCorrect: false },
+    ],
+  },
+  {
+    title: "Quais foram as cidades ucranianas que declararam independência?",
+    options: [
+      { answer: "Donetsk e Luhansk", isCorrect: true },
+      { answer: "Kiev e Karkhiv", isCorrect: false },
+      { answer: "Dnipro e Mariupol", isCorrect: false },
+      { answer: "Odessa e Lviv", isCorrect: false },
+    ],
+  },
+  {
+    title: "Qual é a moeda da Russia?",
+    options: [
+      { answer: "Rupia", isCorrect: false },
+      { answer: "Renminbi", isCorrect: false },
+      { answer: "Dólar Russo", isCorrect: false },
+      { answer: "Rublo", isCorrect: true },
+    ],
+  },
 ];
-export default questions;
+export default myQuestions;
