@@ -37,9 +37,9 @@ background: linear-gradient(90deg, rgba(42,92,191,1) 0%, rgba(44,111,250,1) 46%,
   justify-content: space-evenly;
 }
 .title{
-  font-size: 1.7rem;
+  font-size: 2.5rem;
   color: black;
-  margin: 1.2rem;
+  margin: 2rem;
 text-align: center;
 }
 .right {
@@ -48,28 +48,33 @@ text-align: center;
 .wrong {
   color: red;
 }
+.over{
+  color:rgb(42,92,191);
+}
 .button{
   padding: .3rem;
   text-align: center;
   font-size: 1.3rem;
   border-radius: 5px;
   color: white;
-  background-color: rgb(43, 115, 248);
+  background-color: rgb(42,92,191);;
 }
 .button:hover{
-  color: rgb(43, 115, 248);
+  color: rgb(42,92,191);
   background-color: white;
   cursor: pointer;
 }
+.details{
+ color: rgb(42,92,191);
+}
 ol {
-  margin: 2rem;
-  list-style-position: inside;
+  margin: 4rem;
+  list-style-type: none;
 }
 
 li{
   text-align: center;
-   font-size: 1.3rem;
-  margin: 1rem;
+   font-size: 1.6rem;
   color: black;
   cursor: pointer;
 }
@@ -77,11 +82,17 @@ li:hover{
   background-color: hsla(32, 100%, 91%, 0.41);
   color:hsla(0, 0%, 17%, 1);
 }
+li:not(:last-child){
+  margin-bottom: 1rem;
+}
 @media(max-width: 600px){
   .title{
     font-size: 1.6rem;
   }
   li{
     font-size: 1.3rem;
+  }
+  .row{
+    font-size: .8rem;
   }
 }
