@@ -17,7 +17,7 @@ function App() {
     const HTTPRequest = async () => {
       try {
         const response = await axios.get(
-          "https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple"
+          "https://opentdb.com/api.php?amount=10&category=15&difficulty=easy&type=multiple"
         );
         const newArrayofData = response.data.results.map((item) => ({
           category: item.category,
@@ -42,8 +42,10 @@ function App() {
     if (isCorrect) {
       setCorrect(true);
       setPoints((prevPoints) => prevPoints + 1);
+      setTimeout(()=> nextQuestion(), 1000)
     } else {
       setIncorrect(true);
+      setTimeout(()=> nextQuestion(), 1000)
     }
   };
   const tryAgain = () => {
@@ -64,13 +66,13 @@ function App() {
     }
   };
 
-  return (
-    data.length > 0 ? (<main className="App">
-      {!correct && !incorrect && !gameOver &&  (
+  return data.length > 0 ? (
+    <main className="App">
+      {!correct && !incorrect && !gameOver && (
         <div>
           <div className="row details">
             <p>
-              Question {questionIndex} / {data.length}
+              Question {questionIndex + 1} / {data.length}
             </p>
             <p>Score: {points}</p>
           </div>
@@ -102,7 +104,7 @@ function App() {
             />
           </ol>
           <div className="row details">
-            <p>Category: {data[questionIndex].category}</p>
+            <p>Category: {data[questionIndex].category === "Entertainment: Video Games" && "Video Games"}</p>
             <p>Difficulty: {data[questionIndex].difficulty}</p>
           </div>
         </div>
@@ -110,25 +112,25 @@ function App() {
 
       {correct && !incorrect && !gameOver && (
         <div className="column">
-          <h1 className="right">😎 CORRECT 😎</h1>
-          <div className="button" onClick={() => nextQuestion()}>
+            <h1 className="right">😎 CORRECT 😎</h1>
+          {/* <div className="button" onClick={() => nextQuestion()}>
             Next Question
-          </div>
+          </div> */}
         </div>
       )}
       {incorrect && !correct && !gameOver && (
-        <div className="column">
-          <h1 className="wrong">😒 WRONG 😒</h1>
-          <div className="button" onClick={() => nextQuestion()}>
+        <div className="column">   
+            <h1 className="wrong">😒 WRONG 😒</h1>
+          {/* <div className="button" onClick={() => nextQuestion()}>
             Next Question
-          </div>
+          </div> */}
         </div>
       )}
       {gameOver && (
-        <div className="column">
+        <div className="column box">
           <h1 className="over">IT IS OVER</h1>
           <p>
-            {points} Right Answers of {data.length}
+            {points} Right Answer{points > 1 && "s"} out of {data.length}
           </p>
           {points === data.length && <h1 className="right">🎉PERFECT!🎉</h1>}
           <div className="button" onClick={() => tryAgain()}>
@@ -136,7 +138,11 @@ function App() {
           </div>
         </div>
       )}
-    </main>) : (<div className="App"><h1 className="over">Loading Questions...</h1></div>)
+    </main>
+  ) : (
+    <main className="App">
+     <h1>Loading...</h1>
+    </main>
   );
 }
 

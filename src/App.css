@@ -13,7 +13,7 @@ body{
 background: linear-gradient(90deg, rgba(42,92,191,1) 0%, rgba(44,111,250,1) 46%, rgba(32,71,194,0.9836309523809523) 69%);
 }
 
-.App{
+main.App{
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -23,13 +23,17 @@ background: linear-gradient(90deg, rgba(42,92,191,1) 0%, rgba(44,111,250,1) 46%,
   padding: 1rem;
   border-radius: .8rem;
   max-width: 65vw;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 .column{
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  place-items: space-around;
-  place-content: space-around;
+}
+.box{
+  height: 300px;
+  width: 300px;
 }
 .row{
   display: flex;
@@ -60,6 +64,7 @@ text-align: center;
   background-color: rgb(42,92,191);;
 }
 .button:hover{
+  font-weight: bold;
   color: rgb(42,92,191);
   background-color: white;
   cursor: pointer;
@@ -71,7 +76,6 @@ ol {
   margin: 4rem;
   list-style-type: none;
 }
-
 li{
   text-align: center;
    font-size: 1.6rem;
@@ -85,7 +89,18 @@ li:hover{
 li:not(:last-child){
   margin-bottom: 1rem;
 }
-@media(max-width: 600px){
+@media(max-width: 900px){
+  .title{
+    font-size: 1.7rem;
+  }
+  li{
+    font-size: 1.4rem;
+  }
+  .row{
+    font-size: .8rem;
+  }
+}
+@media(max-width: 700px){
   .title{
     font-size: 1.6rem;
   }
