@@ -12,44 +12,44 @@ function App() {
   const [incorrect, setIncorrect] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [data, setData] = useState([]);
-
   useEffect(() => {
+    const HTTPRequest = async () => {
+      try {
+        const response = await axios.get(
+          "https://opentdb.com/api.php?amount=10&category=15&difficulty=hard&type=multiple"
+        );
+        const shuffle = (array) => {
+          let temporaryValue;
+          let randomIndex;
+          let currentIndex = array.length;
+          while (0 !== currentIndex) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+          }
+          return array;
+        };
+        const newArrayofData = response.data.results.map((item) => ({
+          question: item.question,
+          options: shuffle([
+            { answer: item.correct_answer, isCorrect: true },
+            { answer: item.incorrect_answers[0], isCorrect: false },
+            { answer: item.incorrect_answers[1], isCorrect: false },
+            { answer: item.incorrect_answers[2], isCorrect: false },
+          ]),
+        }));
+        setQuestionIndex(0);
+        setData(newArrayofData);
+        console.log(data);
+      } catch (e) {
+        console.error(e);
+      }
+    };
     HTTPRequest();
   }, []);
 
-  const HTTPRequest = async () => {
-    const response = await axios.get(
-      "https://opentdb.com/api.php?amount=10&category=15&difficulty=hard&type=multiple"
-    );
-    const shuffle = (array) => {
-      let temporaryValue;
-      let randomIndex;
-      let currentIndex = array.length;
-      while (0 !== currentIndex) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-      }
-      return array;
-    };
-    const newArrayofData = response.data.results.map((item) => ({
-      question: item.question,
-      options: shuffle([
-        { answer: item.correct_answer, isCorrect: true },
-        { answer: item.incorrect_answers[0], isCorrect: false },
-        { answer: item.incorrect_answers[1], isCorrect: false },
-        { answer: item.incorrect_answers[2], isCorrect: false },
-      ]),
-    }
-    ))
-
-    const shuffledArray = shuffle(newArrayofData)
-    console.log("formated", newArrayofData )
-    console.log("shuf", shuffledArray);
-
-  };
   const checkRightAnswer = (isCorrect) => {
     if (isCorrect) {
       setCorrect(true);
@@ -75,7 +75,7 @@ function App() {
       setGameOver(true);
     }
   };
-
+  //TODO RENDER USING MAP
   return (
     <div className="App">
       {gameOver && (
@@ -89,25 +89,33 @@ function App() {
           </div>
         </div>
       )}
-      {!correct && !incorrect && !gameOver && (
+      {!correct && !incorrect && !gameOver && data.length > 0 &&(
         <div>
-          <Question question={"pergunta"} />
+          <Question question={data[questionIndex].question} />
           <ol>
             <Answer
-              checkRightAnswer={() => checkRightAnswer(false)}
-              answer={"resposta 1"}
+              checkRightAnswer={() =>
+                checkRightAnswer(data[questionIndex].options[0].isCorrect)
+              }
+              answer={data[questionIndex].options[0].answer}
             />
             <Answer
-              checkRightAnswer={() => checkRightAnswer(false)}
-              answer={"resposta 2"}
+              checkRightAnswer={() =>
+                checkRightAnswer(data[questionIndex].options[1].isCorrect)
+              }
+              answer={data[questionIndex].options[1].answer}
             />
             <Answer
-              checkRightAnswer={() => checkRightAnswer(false)}
-              answer={"resposta 3"}
+              checkRightAnswer={() =>
+                checkRightAnswer(data[questionIndex].options[2].isCorrect)
+              }
+              answer={data[questionIndex].options[2].answer}
             />
             <Answer
-              checkRightAnswer={() => checkRightAnswer(false)}
-              answer={"resposta 4"}
+              checkRightAnswer={() =>
+                checkRightAnswer(data[questionIndex].options[3].isCorrect)
+              }
+              answer={data[questionIndex].options[2].answer}
             />
           </ol>
         </div>
