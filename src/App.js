@@ -65,7 +65,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <main className="App">
       {!correct && !incorrect && !gameOver && data.length > 0 && (
         <div>
           <div className="row details">
@@ -136,7 +136,7 @@ function App() {
           </div>
         </div>
       )}
-    </div>
+    </main>
   );
 }
 
