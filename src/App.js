@@ -65,8 +65,8 @@ function App() {
   };
 
   return (
-    <main className="App">
-      {!correct && !incorrect && !gameOver && data.length > 0 && (
+    data.length > 0 ? (<main className="App">
+      {!correct && !incorrect && !gameOver &&  (
         <div>
           <div className="row details">
             <p>
@@ -136,7 +136,7 @@ function App() {
           </div>
         </div>
       )}
-    </main>
+    </main>) : (<div className="App"><h1 className="over">Loading Questions...</h1></div>)
   );
 }
 
