@@ -77,13 +77,14 @@ ol {
   list-style-type: none;
 }
 li{
+  border-radius: 5px;
   text-align: center;
    font-size: 1.6rem;
   color: black;
   cursor: pointer;
 }
 li:hover{
-  background-color: hsla(32, 100%, 91%, 0.41);
+  background-color: hsla(203, 79%, 76%, 40%);
   color:hsla(0, 0%, 17%, 1);
 }
 li:not(:last-child){
