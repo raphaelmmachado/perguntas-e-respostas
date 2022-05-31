@@ -1,10 +1,14 @@
 import "./App.css";
+import CheckAnswer from "./components/CheckAnswer";
 import Question from "./components/Question.js";
 import Answer from "./components/Answer.js";
 import shuffle from "./components/shuffleArray";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { decode } from "html-entities";
+import Details1 from "./components/Details1";
+import Details2 from "./components/Details2";
+import GameOverBox from "./components/GameOverBox";
 
 function App() {
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -14,7 +18,7 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [data, setData] = useState([]);
   useEffect(() => {
-    const HTTPRequest = async () => {
+    const getQuestions = async () => {
       try {
         const response = await axios.get(
           "https://opentdb.com/api.php?amount=10&category=15&difficulty=easy&type=multiple"
@@ -35,20 +39,20 @@ function App() {
         console.error(e);
       }
     };
-    HTTPRequest();
+    getQuestions();
   }, []);
 
   const checkRightAnswer = (isCorrect) => {
     if (isCorrect) {
       setCorrect(true);
       setPoints((prevPoints) => prevPoints + 1);
-      setTimeout(()=> nextQuestion(), 1000)
+      setTimeout(() => nextQuestion(), 1000);
     } else {
       setIncorrect(true);
-      setTimeout(()=> nextQuestion(), 1000)
+      setTimeout(() => nextQuestion(), 1000);
     }
   };
-  const tryAgain = () => {
+  const restart = () => {
     setQuestionIndex(0);
     setPoints(0);
     setCorrect(false);
@@ -69,13 +73,12 @@ function App() {
   return data.length > 0 ? (
     <main className="App">
       {!correct && !incorrect && !gameOver && (
-        <div>
-          <div className="row details">
-            <p>
-              Question {questionIndex + 1} / {data.length}
-            </p>
-            <p>Score: {points}</p>
-          </div>
+        <section>
+          <Details1
+            questionIndex={questionIndex + 1}
+            dataLength={data.length}
+            showPoint={points}
+          />
           <Question question={decode(data[questionIndex].question)} />
           <ol>
             <Answer
@@ -103,45 +106,23 @@ function App() {
               answer={decode(data[questionIndex].options[3].answer)}
             />
           </ol>
-          <div className="row details">
-            <p>Category: {data[questionIndex].category === "Entertainment: Video Games" && "Video Games"}</p>
-            <p>Difficulty: {data[questionIndex].difficulty}</p>
-          </div>
-        </div>
+          <Details2 category={data[questionIndex].category} difficulty={data[questionIndex].difficulty}/>
+        </section>
       )}
 
       {correct && !incorrect && !gameOver && (
-        <div className="column">
-            <h1 className="right">😎 CORRECT 😎</h1>
-          {/* <div className="button" onClick={() => nextQuestion()}>
-            Next Question
-          </div> */}
-        </div>
+        <CheckAnswer className="right" isCorrect="😎 CORRECT 😎" />
       )}
       {incorrect && !correct && !gameOver && (
-        <div className="column">   
-            <h1 className="wrong">😒 WRONG 😒</h1>
-          {/* <div className="button" onClick={() => nextQuestion()}>
-            Next Question
-          </div> */}
-        </div>
+        <CheckAnswer className="wrong" isCorrect="😒 WRONG 😒" />
       )}
       {gameOver && (
-        <div className="column box">
-          <h1 className="over">IT IS OVER</h1>
-          <p>
-            {points} Right Answer{points > 1 && "s"} out of {data.length}
-          </p>
-          {points === data.length && <h1 className="right">🎉PERFECT!🎉</h1>}
-          <div className="button" onClick={() => tryAgain()}>
-            Restart
-          </div>
-        </div>
+        <GameOverBox showPoint={points} dataLength={data.length} restart={()=> restart()}/>
       )}
     </main>
   ) : (
     <main className="App">
-     <h1>Loading...</h1>
+      <h1>Loading...</h1>
     </main>
   );
 }

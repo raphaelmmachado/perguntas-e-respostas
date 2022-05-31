@@ -1,6 +1,6 @@
 const myQuestions = [
   {
-    title: "Qual é o nome do personagem principal dos jogos da nintendo?",
+    title: "Qual é o nome do personagem principal da nintendo?",
     options: [
       { answer: "Sonic", isCorrect: false },
       { answer: "Crash Bandicoot", isCorrect: false },
@@ -23,7 +23,7 @@ const myQuestions = [
       { answer: "Babu", isCorrect: false },
       { answer: "Tiririca", isCorrect: false },
       { answer: "Arthur", isCorrect: true },
-      { answer: "Bolsonaro", isCorrect: false },
+      { answer: "Jade Picon", isCorrect: false },
     ],
   },
   {
@@ -40,7 +40,7 @@ const myQuestions = [
     options: [
       { answer: "Veneza", isCorrect: false },
       { answer: "Roma", isCorrect: true },
-      { answer: "Berlim", isCorrect: false },
+      { answer: "Turim", isCorrect: false },
       { answer: "Milão", isCorrect: false },
     ],
   },
@@ -50,7 +50,7 @@ const myQuestions = [
       { answer: "Rio Branco", isCorrect: true },
       { answer: "Palmas", isCorrect: false },
       { answer: "São Luiz", isCorrect: false },
-      { answer: "Jurassic Park", isCorrect: false },
+      { answer: "Manaus", isCorrect: false },
     ],
   },
   {
@@ -64,7 +64,7 @@ const myQuestions = [
     ],
   },
   {
-    title: "Qual é o nome do dançarino gay dos memes?",
+    title: "Qual é o nome do dançarino dos memes?",
     options: [
       { answer: "Jailson Mendes", isCorrect: false },
       { answer: "Ricardo Milos", isCorrect: true },
