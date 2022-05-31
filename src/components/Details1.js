@@ -4,7 +4,7 @@ export default function Details1(props){
     return(
         <div className="row details">
         <p>
-          Question {props.questionIndex + 1} / {props.dataLength}
+          Question {props.questionIndex} / {props.dataLength}
         </p>
         <p>Score: {props.showPoint}</p>
       </div>

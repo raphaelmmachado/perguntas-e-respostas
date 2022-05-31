@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&family=Roboto&display=swap');
 :root{
-  --background: background: rgb(174,195,237);
+  --background:  rgb(174,195,237);
   --background-gradient: linear-gradient(90deg, rgba(174,195,237,1) 0%, rgba(112,144,209,1) 46%, rgba(44,75,139,1) 85%);
   --box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
@@ -16,7 +16,7 @@ body{
   place-content: center;
   height: 100vh;
   background: var(--background);
-background: var(--background-gradient);
+  background: var(--background-gradient);
 }
 
 main.App{
@@ -29,7 +29,7 @@ main.App{
   padding: 1rem;
   border-radius: .8rem;
   max-width: 65vw;
-  box-shadow: var(--box-shadow)
+  box-shadow: var(--box-shadow);
 }
 .column{
   display: flex;
@@ -117,5 +117,8 @@ li:not(:last-child){
   }
   .row{
     font-size: .8rem;
+  }
+  .right, .wrong{
+    font-size: 1.4rem;
   }
 }
