@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300&family=Roboto&display=swap');
+:root{
+  --background: background: rgb(174,195,237);
+  --background-gradient: linear-gradient(90deg, rgba(174,195,237,1) 0%, rgba(112,144,209,1) 46%, rgba(44,75,139,1) 85%);
+  --box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+
+}
 *{
   font-family: 'Roboto', sans-serif;
   margin: 0;
@@ -9,8 +15,8 @@ body{
   place-items: center;
   place-content: center;
   height: 100vh;
-  background: rgb(42,92,191);
-background: linear-gradient(90deg, rgba(42,92,191,1) 0%, rgba(44,111,250,1) 46%, rgba(32,71,194,0.9836309523809523) 69%);
+  background: var(--background);
+background: var(--background-gradient);
 }
 
 main.App{
@@ -23,7 +29,7 @@ main.App{
   padding: 1rem;
   border-radius: .8rem;
   max-width: 65vw;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: var(--box-shadow)
 }
 .column{
   display: flex;
@@ -47,10 +53,10 @@ main.App{
 text-align: center;
 }
 .right {
-  color: green;
+  color: hsl(118, 44%, 47%)
 }
 .wrong {
-  color: red;
+  color: hsl(4, 79%, 56%);
 }
 .over{
   color:rgb(42,92,191);
@@ -84,7 +90,7 @@ li{
   cursor: pointer;
 }
 li:hover{
-  background-color: hsla(203, 79%, 76%, 40%);
+  background-color: rgba(134, 188, 223, 0.637);
   color:hsla(0, 0%, 17%, 1);
 }
 li:not(:last-child){
