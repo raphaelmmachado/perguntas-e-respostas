@@ -6,7 +6,7 @@ export default function Details1(props){
         <p>
           Question {props.questionIndex + 1} / {props.dataLength}
         </p>
-        <p>Score: {props.showPoints}</p>
+        <p>Score: {props.showPoint}</p>
       </div>
     )
 }
