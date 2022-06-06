@@ -11,7 +11,7 @@ https://rm0909.github.io/perguntas-e-respostas/
 - More about how useState works
 - how useEffect works (without dependencies array, with empty dependencies array and with dependencies array)
 - Pass state as props
-- axios to make http requisition
+- axios to make get request
 
 ____________________________________________________________________________________________________________________
 
