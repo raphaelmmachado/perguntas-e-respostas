@@ -5,7 +5,12 @@ Let's see if you know about video games
 https://rm0909.github.io/perguntas-e-respostas/
 
 ### Build With:
-- React, CSS
+
+- CSS
+- React: Hooks
+- Axios
+- Open Trivia Database API
+
 ### What I Learned:
 - Render api data
 - More about how useState works
@@ -19,7 +24,11 @@ ________________________________________________________________________________
 App de perguntas e respostas sobre video games.  
 
 ### Feito com:
-- React, CSS  
+
+- CSS
+- React: Hooks
+- Axios
+- Open Trivia Database API
 
 ### O que eu aprendi:
 - Renderizar dados de uma api
