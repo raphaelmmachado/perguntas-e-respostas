@@ -1,5 +1,7 @@
 # Quiz App
-Let's see if you know about video games
+Quiz app that consumes Open Trivia Database API.
+Good project to pratice my React skills.
+I struggle to shuffle an array of objects.
 
 ### GitHub Pages:
 https://rm0909.github.io/perguntas-e-respostas/
@@ -21,7 +23,9 @@ https://rm0909.github.io/perguntas-e-respostas/
 ____________________________________________________________________________________________________________________
 
 # Quiz App
-App de perguntas e respostas sobre video games.  
+Um app de perguntas e respostas que consome Open Trivia Database API.
+Foi um bom app para testar minhas skills de React.
+Minha maior dificuldade foi embaralhar uma array de objetos.
 
 ### Feito com:
 
