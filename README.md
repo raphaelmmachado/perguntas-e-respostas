@@ -5,6 +5,8 @@ I struggle to shuffle an array of objects.
 
 ### GitHub Pages:
 https://raphaelmmachado.github.io/perguntas-e-respostas/
+### Screenshot:
+![screenshot](./ss.png)
 
 ### Build With:
 
