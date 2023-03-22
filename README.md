@@ -4,7 +4,7 @@ Good project to pratice my React skills.
 I struggle to shuffle an array of objects.
 
 ### GitHub Pages:
-https://rm0909.github.io/perguntas-e-respostas/
+https://raphaelmmachado.github.io/perguntas-e-respostas/
 
 ### Build With:
 
